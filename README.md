@@ -1,2 +1,24 @@
-# final-gamification-thesis
-This repo is for all development regarding the gamification thesis frontend project.
+# final_gamification_thesis
+
+## Project setup
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Lints and fixes files
+```
+yarn lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
