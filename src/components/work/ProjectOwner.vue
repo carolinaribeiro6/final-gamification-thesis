@@ -9,22 +9,33 @@
             <v-progress-circular color="dark-blue" indeterminate class="mb-3"></v-progress-circular>
         </v-col>
         <v-col v-if="!loading">
-            <v-data-table :items="po" class="pa-5"></v-data-table>
+            <v-data-table :headers=header :items="po" class="pa-5"></v-data-table>
         </v-col>
     </v-card>
   </template>
 
 <script>
+const endpoint = process.env.VUE_APP_URL
+const usenowendpoint = `${endpoint}workDataPO`
+console.log(usenowendpoint)
 export default {
     data() {
         return {
+            header: [
+                { title:'Date', value: 'date', class: 'my-header-style' },
+                { title:'Project', value: 'project', class: 'my-header-style' },
+                { title:'Area', value: 'area', class: 'my-header-style' },
+                { title:'Task', value: 'task', class: 'my-header-style' },
+                { title:'Description', value: 'description', class: 'my-header-style' },
+                { title:'Responsible', value: 'responsible', class: 'my-header-style' }
+            ],
             po: [],
             loading: false,
         }
     },
     mounted: async function() {
         this.loading = true;
-        const response = await fetch('https://script.googleusercontent.com/macros/echo?user_content_key=rq46BLlhrm8Ctn2XsUBcsA5c6zRxmbz5aNR4TA9cXs7QXvKRzSyoZ3OGmnKMGFNTPn6vp79YhF42TLZqiAauvGBwizOtQPDSOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHaxE7iUcfzKPGVBTNtwRwCZm1d1RUAMXf7LKZaDVSkC9MmxZ2d2aH1rLVc-ItEcE4M92QyuPbGk92pS0Ldp0W-a-FmIWIcb5HAfa37EJiSgEaX9cFHI9_7ZXGdUN9lSJ70g&lib=MfXf9M1aXI2OGAdtBCOkbvWjHAwoJIls-');
+        const response = await fetch(usenowendpoint);
         this.po = await response.json();
         this.loading = false;
     }

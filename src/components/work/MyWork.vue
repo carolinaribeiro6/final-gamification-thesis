@@ -17,8 +17,8 @@
 
 
 <script>
-const endpoint = process.env.VUE_APP_GUEDES
-const usenowendpoint = `${endpoint}/guedes`
+const endpoint = process.env.VUE_APP_URL
+const usenowendpoint = `${endpoint}workData`
 console.log(usenowendpoint)
 export default {
     data() {
@@ -37,7 +37,7 @@ export default {
     },
     mounted: async function() {
         this.loading = true;
-        const response = await fetch('')
+        const response = await fetch(usenowendpoint)
         this.works = await response.json();
         this.loading = false;
     }
